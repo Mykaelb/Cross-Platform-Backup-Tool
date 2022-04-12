@@ -1,0 +1,17 @@
+
+<key>Label</key>
+	<string>micha</string> [placeholder]
+	<key>Program</key>
+	<string>/Users/micha/Tools/Scripts/BackupScript/start.sh</string>
+	<key>StandardErrorPath</key>
+  
+	  <string>/Users/micha/Tools/Scripts/BackupScript/err.log</string>
+	<key>StandardOutPath</key>
+	  <string>/Users/micha/Tools/Scripts/BackupScript/out.log</string>s
+	<key>StartInterval</key>
+	<integer>3600</integer>
+  <key>WorkingDirectory</key>
+  
+	<string>/Users/micha/Tools/Scripts/BackupScript</string>
+	<key>UserName</key>
+	<string>micha</string>
