@@ -1,1 +1,7 @@
 rsync -r /Users/skibo/Desktop/ /Volumes/UsersBackup
+
+rsync -a /Users=skibo/Documents /Volumes/DocsBackup
+
+rsync -rt –delete /Users/skibo/Desktop /Volumes/DocsBackup
+
+

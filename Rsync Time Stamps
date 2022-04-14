@@ -1,1 +1,2 @@
 rsync -r -t /Users/skibo/Desktop /Volumes/UsersBackup
+rsync -rtb –backup-dir=”backup $(date +\%Y-\%m-\%d)” –delete /Users/skibo/Desktop /Volumes/DocsBackup
