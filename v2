@@ -15,5 +15,5 @@
 	<string>/Users/micha/Tools/Scripts/BackupScript</string>
 	<key>UserName</key>
 	<string>micha</string>
-	
+	d
 	0 0 * * * 1 tar -zcf /var/backups/micha/home/ [placeholder]
