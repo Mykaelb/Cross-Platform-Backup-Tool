@@ -1,0 +1,37 @@
+a backup script that creates a backup of a source directory and copies that over to a destination directory.
+It checks whether or not a file exists, it backs it up incrementally
+if it already exists, it check if its the newest and will not copy
+if it doesn't exits, it will create it
+it will always check files added, it will check if the files in the source exist in the destination directory
+
+
+[We wanted to go back to the drawing board and first actually build a file backup system, not with rsync, that's a tentative change
+that we're gonna figure out and not on a cron job, it's just a draft incremental build]
+
+
+#!/bin/bash
+
+source=/home/micha/Project1/source        (My variables to read and copy files to and from)
+dest=/home/micha/Project1/destination
+
+for file in $(find $source -printf "%P\n") ; do
+if [ -a $dest/$file ] ; then			   (For loop - checks the files, tells it to look in the source and print format)
+								(If statement: (-a checks if destination file exists) this is looping all the 
+								files in the source and listing everything in a recursive manner. meaning all the 
+								files underneath source are in a relative path, so it basically checks anything 
+behind source and if it exists behind destination. So it checks if the copied files have already been created. Then if its there, 
+it doesn't need to be copied)
+   
+
+				
+        if [ $source/$file -nt $dest/$file ] ; then  		(if the source file is newer than the destination)
+        echo "Copying: newer file"				(it will leave a message)
+        cp -r $source/$file $dest/$file	(it copies recursivley, so that it also copies all of the underlying folders and stuff)
+        else							(if thats not the case)
+        echo "File $file already exists"			(report that it would be redundant, and basically skip copying it)
+        fi 								(end it with fi)
+    else 								(if that's not the case then)
+    echo "$file is being copied into $dest"		(report the file being copied)
+    cp -r $source/$file $dest/$file		
+    fi								(end with fi)
+done									(done)
