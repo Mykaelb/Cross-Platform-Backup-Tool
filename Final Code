@@ -1,0 +1,96 @@
+# m h dom mon dow   command
+0 0 1 * * bash /usr/local/bin/backup.sh
+Automatic Backup every 1st of every month at 12P.M 
+m=minute 
+h= hour 
+dom=day of the month 
+mon=month 
+dow=day of the week 
+
+///
+
+
+@ECHO OFF
+ECHO Backup Complete
+xcopy /f /s /h /d C:\Users\Jerry\Desktop\copy D:\copy
+PAUSE
+
+////
+
+#!/bin/bash 
+-set -x
+Clear
+#Program will backup the directory to a external disk automatically 
++set -x
+Osascript -e ‘display notification “Backup is about to begin”’
+rm./.log
+SOURCE=$1
+DEST_DIRECTORY=$2
+EXCLUDE_FILE=$3
+SSH_SERVER=$4
+SSH_USER=$5
+SSH_OPTION=$6
+
+SSH_REMOTE_SERVER=$5@$4
+SSH=ssh $6 $SSH_REMOTE_SERVER
+SSH_DEST_DIRECTORY=
+
+PWD=$(pwd)
+ID=$(id)
+echo $ID is running this script from $PWD
+
+#First - check that external disk is connected
+echo "Source Directory: $1"
+echo "BACKDIR: $BACKUPDIR"
+
+#Second - if the directory exists, check if the "backup" directory exists
+if ($SSH '[ ! -d $BACKUPDIR directory does not exist. Creating."
+mkdir $BACKUPDIR
+fi
+
+#Third - get the lastest backup dir
+LATEST=$ ($SSH 'ls' '-I' '@eaDir' '-r' $DIR ' |' 'head' '-n1')
+echo "LATEST: $LATEST"
+
+DATE='date
+TARGET=$BACKUPDIR/$DATE
+echo "TARGET: $TARGET"
+
+EXLUDE _FILE=$3
+echo "EXCLUDE_FILE: $EXCLUDE_FILE"
+#take relative path
+COMPLATE_LINK_DEST_DIR="../$LATEST"
+
+echo "linking old $COMPLETE_LINK_DEST_DIR to $TARGET..."
+
+/usr/local/bin/rsync -av --numeric-ids --progress --delete -e "ssh -p 2222" --exclude-from="$EXCLUDE_FILE" --link-dest="$COMPLETE_LINK_DEST_DIR" $1 $TARGET | tee $HOME/Tools/Scripts/BackupScript/backup$DATE.log
+/usr/local/bin/rsync -av --numeric-ids --progress --delete -e "ssh -p 2222" --exclude-from="$EXCLUDE_FILE" --link-dest="$COMPLETE_LINK_DEST_DIR" $1 $TARGET 
+| tee $HOME/Tools/Scripts/BackupScript/backup$DATE.log
+
+
+exit 
+
+--------------------------------------------------------------
+
+
+<dict>
+	<key>Label</key>
+	<string>com.Jerry.scripts.backupscript</string>
+	<key>LimitLoadToSessionType</key>
+	<string>Aqua</string>
+	<key>Program</key>
+	<string>/Users/Jerry/Tools/Scripts/BackupScript/start.sh</string>
+	<key>StandardErrorPath</key>
+	<string>/Users/Jerry/Tools/Scripts/BackupScript/err.tmp2</string>
+	<string>/Users/Jerry/Tools/Scripts/BackupScript/err.log</string>
+	<key>StandardOutPath</key>
+	<string>/Users/Jerry/Tools/Scripts/BackupScript/out.tmp2</string>
+	<string>/Users/Jerry/Tools/Scripts/BackupScript/out.log</string>s
+	<key>StartInterval</key>
+	<integer>3600</integer>
+	<key>WorkingDirectory</key>
+	<string>/Users/Jerry/Tools/Scripts/BackupScript</string>
+	<key>UserName</key>
+	<string>Jerry</string>
+</dict>
+</plist>
