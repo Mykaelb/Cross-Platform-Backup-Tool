@@ -1,4 +1,4 @@
-** Mykael
+
 <key>Label</key>
 	<string>micha</string> [placeholder]
 	<key>Program</key>
@@ -17,9 +17,12 @@
 	<string>micha</string>
 	
 	0 0 * * * 1 tar -zcf /var/backups/micha/home/ [placeholder]
+	
+	rsync -r /Users/skibo/Desktop/ /Volumes/UsersBackup
 
+rsync -a /Users=skibo/Documents /Volumes/DocsBackup
 
-** Jerry
+rsync -rt –delete /Users/skibo/Desktop /Volumes/DocsBackup
 
 # m h dom mon dow   command
 0 0 1 * * bash /usr/local/bin/backup.sh
@@ -47,11 +50,5 @@ Clear
 +set -x
 Osascript -e ‘display notification “Backup is about to begin”’
 
-** Abolaji
 
-rsync -r /Users/skibo/Desktop/ /Volumes/UsersBackup
-
-rsync -a /Users=skibo/Documents /Volumes/DocsBackup
-
-rsync -rt –delete /Users/skibo/Desktop /Volumes/DocsBackup
 
