@@ -15,6 +15,28 @@
 	<string>/Users/micha/Tools/Scripts/BackupScript</string>
 	<key>UserName</key>
 	<string>micha</string>
+	***************************
+	<dict>
+	<key>Label</key>
+	<string>com.Jerry.scripts.backupscript</string>
+	<key>LimitLoadToSessionType</key>
+	<string>Aqua</string>
+	<key>Program</key>
+	<string>/Users/Jerry/Tools/Scripts/BackupScript/start.sh</string>
+	<key>StandardErrorPath</key>
+	<string>/Users/Jerry/Tools/Scripts/BackupScript/err.tmp2</string>
+	<string>/Users/Jerry/Tools/Scripts/BackupScript/err.log</string>
+	<key>StandardOutPath</key>
+	<string>/Users/Jerry/Tools/Scripts/BackupScript/out.tmp2</string>
+	<string>/Users/Jerry/Tools/Scripts/BackupScript/out.log</string>s
+	<key>StartInterval</key>
+	<integer>3600</integer>
+	<key>WorkingDirectory</key>
+	<string>/Users/Jerry/Tools/Scripts/BackupScript</string>
+	<key>UserName</key>
+	<string>Jerry</string>
+</dict>
+</plist>
 	
 	0 0 * * * 1 tar -zcf /var/backups/micha/home/ [placeholder]
 	
