@@ -1,0 +1,26 @@
+from datetime import date 
+import shutil
+
+def take_bkp(src_file_name, bkp_file_name = None, 
+             src_file_loc = '', bkp_file_loc = ''):
+
+    src_file = src_file_loc+src_file_name
+
+    src_file= src_file_loc+src_file_name
+
+    bkp_file = bkp_file_loc+bkp_file_name
+
+    today = date.today()
+    date_format = today.strftime("%d_%b_%Y_")
+
+    if bkp_file_name is None or not bkp_file_name:
+        bkp_file_name = src_file_name
+        bkp_file = bkp_file_loc+date_format+bkp_file_name
+    
+    else:
+        bkp_file = bkp_file_loc+date_format+bkp_file_name 
+
+
+    shutil.copy2(src_file, bkp_file)
+
+    print("Backup Finished")
