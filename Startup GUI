@@ -1,0 +1,14 @@
+from tkinter import *  
+backup=Tk()  
+backup.title("ALERT")  
+backup.geometry("300x250")  
+      
+      
+Label(backup, text="Do you want to backup?").pack()  
+header= Entry(backup, textvariable="Do you want to backup?")   
+      
+      
+Button(backup, text="Yes", width=10, height=1).pack()    
+
+Button(backup, text="No", width=10, height=1).pack()  
+backup.mainloop() 
